@@ -3,13 +3,13 @@ import time
 from memory.forgetting import periods
 
 # the time format used in my emacs notes is [2018-12-16 21:03:43]
-pattern_format = "\\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\\]"
+pattern_format = "[# ]*\\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\\]"
 pattern = re.compile(pattern_format)
 
 
 def between_time(to_check_time):
     # strptime: string parse time, return structured time, a tuple
-    parsed_datetime = time.strptime(to_check_time.strip('\n').strip(' '), '[%Y-%m-%d %H:%M:%S]')
+    parsed_datetime = time.strptime(to_check_time.strip('\n').strip('#').strip(' '), '[%Y-%m-%d %H:%M:%S]')
     sec = time.mktime(parsed_datetime)
 
     for i in periods:
@@ -28,7 +28,7 @@ def extract(input_filename, output_filename):
             if match_result is not None:
                 if between_time(match_result.string) is True:
                     content_start = True
-                    output_file.write('source file: [['+input_filename+']]\n')
+                    output_file.write('* source file: [[' + input_filename + ']]\n')
                     output_file.write(match_result.string)
                 else:
                     content_start = False

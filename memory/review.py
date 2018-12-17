@@ -1,12 +1,14 @@
 import sys
 import os
 import time
+
 from memory.each_file import extract
 
 if len(sys.argv) == 1:
-    review_path_list = ['/home/hack/notes', '/home/hack/ai']
+    review_path_list = ['/home/hack/notes', '/home/hack/ai', '/home/hack/PycharmProjects/']
 else:
     review_path_list = sys.argv[1:]
+
 
 # if the modify time of a file is earlier than one month,
 # pass it to reduce the process time
@@ -20,7 +22,8 @@ else:
 
 exclude_list = ['.git', '.png', '#', '~']
 
-os.remove(output_filename)
+if os.path.exists(output_filename):
+    os.remove(output_filename)
 
 
 def include(fullpath):
@@ -34,14 +37,10 @@ def include(fullpath):
 for path in review_path_list:
     for root, dirs, files in os.walk(path):
         for file in files:
-
             fullpath = root + '/' + file
-
             mtime = os.path.getmtime(fullpath)
-
             # pass the files that earlier than one month
             if mtime < one_month_ago:
                 continue
-
             if include(fullpath):
                 extract(fullpath, output_filename)
