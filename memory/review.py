@@ -1,3 +1,5 @@
+# [2018-12-18 14:29:00]
+
 import sys
 import os
 import time
@@ -106,3 +108,16 @@ for path in review_path_list:
                 continue
             if include():
                 extract(fullpath)
+
+# when the task is done, play a song to remind
+# environment: Debian 9
+# This are two ways to play out a sound
+# 1. paplay
+# 2. rhythmbox
+# In my test, the paplay command can play my recorded sound,
+# but it can not play the mp3 type file download from the internet
+# rhythmobx can play all my recorded sound and mp3 files
+# so I adopted this method
+os.system('rhythmbox ~/Music/guang-hui-sui-yue.mp3 2&>/dev/null &')
+# clean the to play queue, that is only play one song
+os.system('rhythmbox-client --clear-queue')
