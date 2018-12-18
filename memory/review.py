@@ -119,5 +119,6 @@ for path in review_path_list:
 # rhythmobx can play all my recorded sound and mp3 files
 # so I adopted this method
 os.system('rhythmbox ~/Music/guang-hui-sui-yue.mp3 2&>/dev/null &')
-# clean the to play queue, that is only play one song
-os.system('rhythmbox-client --clear-queue')
+# the song's time
+time.sleep(4 * 60 + 59)
+os.system('rhythmbox-client --quit')
