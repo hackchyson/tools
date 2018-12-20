@@ -9,6 +9,6 @@
     "#",
     "~"
   ],
-  "output_dir": "/home/hack/review/",
-  "file_format": "%Y-%m-%d-%H.review"
+  "output_dir": "",
+  "music": ""
 }
