@@ -11,6 +11,9 @@ if len(sys.argv) == 1:
 else:
     review_path_list = sys.argv[1:]
 
+# if the fullpath contains the elements in the following list, do not scan the content
+exclude_list = ['.git', '.png', '#', '~']
+
 # if the modify time of a file is earlier than one month,
 # pass it to reduce the process time
 one_month_ago = time.time() - 30 * 24 * 60 * 60
@@ -18,14 +21,15 @@ one_month_ago = time.time() - 30 * 24 * 60 * 60
 current_hour = time.gmtime().tm_hour + 8  # beijing time zone
 current_day = time.strftime('%Y-%m-%d')
 
+base_path = "/home/hack/review"
 # output_filename
 if current_hour <= 11:
     output_filename = '/home/hack/review/' + current_day + '-am.review'
 else:
     output_filename = '/home/hack/review/' + current_day + '-pm.review'
 
-# if the fullpath contains the elements in the following list, do not scan the content
-exclude_list = ['.git', '.png', '#', '~']
+if not os.path.exists(base_path):
+    os.mkdir(base_path)
 
 # to avoid the program runs several times and the result output file have several repeated content
 if os.path.exists(output_filename):
@@ -117,8 +121,9 @@ for path in review_path_list:
 # In my test, the paplay command can play my recorded sound,
 # but it can not play the mp3 type file download from the internet
 # rhythmobx can play all my recorded sound and mp3 files
-# so I adopted this method
-os.system('rhythmbox ~/Music/guang-hui-sui-yue.mp3 2&>/dev/null &')
-# the song's time
-time.sleep(4 * 60 + 59)
-os.system('rhythmbox-client --quit')
+
+# os.system('rhythmbox ~/Music/guang-hui-sui-yue.mp3 2&>/dev/null &')
+# # the song's time
+# time.sleep(4 * 60 + 59)
+# os.system('rhythmbox-client --quit')
+os.system("paplay ~/Recordings/review")

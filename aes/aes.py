@@ -1,5 +1,9 @@
+# Author: Hack Chyson
+# [2018-12-20 11:27:27]
+
 import sys
 import base64
+# package: cryptodome
 from Crypto.Cipher import AES
 
 
