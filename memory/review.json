@@ -2,7 +2,8 @@
   "paths": [
     "/home/hack/notes",
     "/home/hack/ai",
-    "/home/hack/PycharmProjects/"
+    "/home/hack/PycharmProjects",
+    "/home/hack/music"
   ],
   "excludes": [
     ".git",
