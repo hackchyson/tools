@@ -55,8 +55,10 @@ sixth_period = sixth_point, sixth_point + one_day
 periods = first_period, second_period, third_period, fourth_period, fifth_period, sixth_period
 
 # the time format used in my emacs notes is [2018-12-16 21:03:43]
-pattern_format = "[# ]*\\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\\]"
-pattern = re.compile(pattern_format)
+time_pattern_format = "[# ]*\\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\\]"
+time_pattern = re.compile(time_pattern_format)
+headline_pattern_format = "^\\*+ "
+headline_pattern = re.compile(headline_pattern_format)
 
 
 # to check the time is in the review time or not
@@ -78,7 +80,7 @@ def extract(input_filename):
     output_file = open(output_filename, 'a', encoding='utf8')
     try:
         for line in input_file:
-            match_result = pattern.match(line)
+            match_result = time_pattern.match(line)
             if match_result is not None:
                 if between_time(match_result.string) is True:
                     content_start = True
@@ -88,7 +90,7 @@ def extract(input_filename):
                     content_start = False
             if match_result is None and content_start is True:
                 # if the line is headlines, demote one level to make the structure more nice looking
-                if line.startswith("* "):
+                if headline_pattern.match(line) is not None:
                     output_file.write("*"+line)
                 else:
                     output_file.write(line)
