@@ -87,7 +87,11 @@ def extract(input_filename):
                 else:
                     content_start = False
             if match_result is None and content_start is True:
-                output_file.write(line)
+                # if the line is headlines, demote one level to make the structure more nice looking
+                if line.startswith("* "):
+                    output_file.write("*"+line)
+                else:
+                    output_file.write(line)
     except Exception:
         pass
 

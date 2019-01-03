@@ -7,6 +7,13 @@ import base64
 from Crypto.Cipher import AES
 
 
+# all the encrypt and decrypt operations is based on binary data
+# this avoid many encoding problems
+# base64 is used for human reading
+# because you cannot copy a binary content in the console or somewhere else
+# base64 can convert any character,
+# so it is used between binary and character
+
 # if the text is not a multiple of 16, add some characters
 # so that it become a multiple of 16
 def multiple_of_16(text):
@@ -25,6 +32,7 @@ text = sys.argv[3]
 key_bin = multiple_of_16(key)
 text_bin = multiple_of_16(text)
 aes = AES.new(key_bin, AES.MODE_ECB)  # init cipher
+
 
 
 def encrypt():

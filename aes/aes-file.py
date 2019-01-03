@@ -32,7 +32,7 @@ output_file = open(output_filename, "w")
 def encrypt():
     for line in input_file:
         encrypted_bin = aes.encrypt(multiple_of_16(line))
-        encrypted_text = str(base64.encodebytes(encrypted_bin), encoding='utf8')  # ?
+        encrypted_text = str(base64.encodebytes(encrypted_bin), encoding='utf8')  
         output_file.write(encrypted_text)
     input_file.close()
     output_file.close()
