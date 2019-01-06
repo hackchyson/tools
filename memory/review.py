@@ -85,7 +85,7 @@ def extract(input_filename):
                 if between_time(match_result.string) is True:
                     content_start = True
                     output_file.write('* source file: [[' + input_filename + ']]\n')
-                    output_file.write(match_result.string)
+                    # output_file.write(match_result.string)
                 else:
                     content_start = False
             if match_result is None and content_start is True:
