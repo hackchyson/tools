@@ -1,6 +1,6 @@
 import sys
 
-filename='filename'
+filename = 'filename'
 tmp = sys.argv[0].split('/')
 tmp.pop()
 tmp += [filename]
