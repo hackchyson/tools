@@ -11,5 +11,14 @@
     "~"
   ],
   "output_dir": "/home/hack/review/",
-  "file_format": "%Y-%m-%d-%H.review"
+  "file_format": "%Y-%m-%d-%H.review",
+  "stop_line": 365,
+  "forgetting": [
+    1,
+    2,
+    4,
+    7,
+    15
+  ],
+  "time_format": ""
 }
