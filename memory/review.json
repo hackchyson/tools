@@ -1,14 +1,17 @@
 {
   "paths": [
-    "/Users/hack/test"
+    "/Users/hack/notes",
+    "/Users/hack/ai/summary"
   ],
   "excludes": [
     ".git",
     "#",
-    "~"
+    "~",
+    ".png",
+    ".gif"
   ],
-  "output_dir": "/Users/hack/test",
-  "file_format": "%Y-%m-%d-%H.review",
+  "output_dir": "/Users/hack/review",
+  "file_format": "%Y-%m-%d.org",
   "stop_line": 365,
   "forgetting": [
     0,
@@ -20,7 +23,7 @@
   ],
   "time_format": "[%Y-%m-%d %a]",
   "time_pattern": "\\[[0-9]{4}-[0-9]{2}-[0-9]{2} (?:Sun|Sat|Mon|Tues|Wed|Thur|Fri)\\]",
-  "encoding": "utf8",
+  "encoding": "",
   "headline_pattern": "^\\*+ ",
   "end": "[hack-end]"
 }

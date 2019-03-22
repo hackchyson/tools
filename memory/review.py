@@ -61,8 +61,8 @@ def between_time(to_check_time):
 # extract content from file needed to review and write into a review file
 def extract(input_filename):
     content_start = False
-    input_file = open(input_filename, 'r', encoding=encoding)
-    output_file = open(output_filename, 'a', encoding=encoding)
+    input_file = open(input_filename, 'r', encoding=encoding) if encoding != "" else open(input_filename, 'r')
+    output_file = open(output_filename, 'a', encoding=encoding) if encoding != "" else open(output_filename, 'a')
     try:
         for line in input_file:
             match_result = time_compile.match(line.strip('\n'))
